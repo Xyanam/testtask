@@ -30,7 +30,6 @@ const MainNavTree = [
         breadcrumb: false,
         submenu: [],
       },
-
       {
         key: "catalog",
         path: `${APP_PREFIX_PATH}/dashboards/sales`,
@@ -85,7 +84,7 @@ const MainNavTree = [
         path: `${APP_PREFIX_PATH}/dashboards/default`,
         title: "Клиенты",
         icon: UserOutlined,
-        breadcrumb: false,
+        breadcrumb: true,
         submenu: [
           {
             key: "extra-pages-list",
@@ -100,7 +99,7 @@ const MainNavTree = [
             path: `${APP_PREFIX_PATH}/pages/user-list`,
             title: "Группы клиентов",
             icon: "",
-            breadcrumb: true,
+            breadcrumb: false,
             submenu: [],
           },
         ],

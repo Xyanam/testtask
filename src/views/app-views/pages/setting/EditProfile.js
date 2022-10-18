@@ -9,7 +9,7 @@ import Loading from "components/shared-components/Loading";
 
 export const EditProfile = () => {
   const history = useHistory();
-  const [state, setState] = useState();
+  const [user, setUser] = useState();
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
@@ -19,16 +19,10 @@ export const EditProfile = () => {
         `https://jsonplaceholder.typicode.com/users/${history.location.state.id}`
       )
       .then((resp) => {
-        setState(resp.data);
+        setUser(resp.data);
         setLoader(false);
       });
   }, []);
-
-  const getBase64 = (img, callback) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => callback(reader.result));
-    reader.readAsDataURL(img);
-  };
 
   const onFinish = (values) => {
     const key = "updatable";
@@ -57,14 +51,14 @@ export const EditProfile = () => {
           name="basicInformation"
           layout="vertical"
           initialValues={{
-            name: state.name,
-            email: state.email,
-            username: state.username,
-            phoneNumber: state.phone,
-            website: state.website,
-            address: state.address.street,
-            city: state.address.city,
-            postcode: state.address.zipcode,
+            name: user.name,
+            email: user.email,
+            username: user.username,
+            phoneNumber: user.phone,
+            website: user.website,
+            address: user.address.street,
+            city: user.address.city,
+            postcode: user.address.zipcode,
           }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
